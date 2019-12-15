@@ -1,6 +1,6 @@
 package Models;
 
-public enum ChessPiece {
+public enum ChessPieceType {
     KING,
     BISHOP,
     KNIGHT,
