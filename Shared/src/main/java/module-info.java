@@ -1,3 +1,6 @@
 module Shared {
-        requires Server;
+    exports PlayerDeets;
+    exports Models;
+    exports RESTHelper;
+
 }

@@ -1,0 +1,8 @@
+<component name="DependencyValidationManager">
+  <state>
+    <unnamed_scope value="file[ChessServer]:pom.xml" />
+    <unnamed_scope value="file[Shared]:pom.xml" />
+    <deny_rule from_scope="file[ChessServer]:pom.xml" to_scope="file[Shared]:pom.xml" is_deny="true" />
+    <deny_rule from_scope="file[ChessServer]:pom.xml" to_scope="file[Shared]:pom.xml" is_deny="true" />
+  </state>
+</component>

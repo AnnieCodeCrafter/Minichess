@@ -1,4 +1,4 @@
-package DatabaseStartup;
+package Database.DatabaseStartup;
 
 import Database.*;
 

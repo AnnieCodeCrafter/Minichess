@@ -37,7 +37,7 @@
 
     </build>
     <modules>
-        <module>Server</module>
+        <module>ChessServer</module>
         <module>Client</module>
         <module>Shared</module>
     </modules>
