@@ -1,16 +1,20 @@
 package Websockets;
 
 import Websockets.ServerStates.WebsocketsCommunicatorService;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.websocket.jsr356.server.ServerContainer;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.websocket.server.ServerContainer;
 
 public class WebsocketServer {
 
     private static final int PORT = 8095;
+    private static final Logger log = LoggerFactory.getLogger(WebsocketServer.class);
 
     public static void main(String[] args) {
         startWebSocketServer();
@@ -45,6 +49,8 @@ public class WebsocketServer {
             t.printStackTrace(System.err);
         }
     }
+
+
 
 
 }

@@ -1,6 +1,12 @@
 package Starts;
 
+import Models.Player;
+import PlayerDeets.PlayerDTO;
+import RESTclient.RestClient;
+import WebsocketsClient.ActiveClientEndpoint;
+import WebsocketsClient.ClientLauncher;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -14,9 +20,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class ClientUI extends Application {
 
     private Rectangle testSquare;
+    private ClientLauncher clientLauncher = new ClientLauncher();
 
     //todo: just puttin this here to see what happens
     private final int BORDERSIZE = 10; // Size of borders in pixels
@@ -36,6 +45,12 @@ public class ClientUI extends Application {
     // Squares for the target area
     private Rectangle[][] squaresTargetArea;
 
+    private TextField userText;
+    private TextField passText;
+
+    private Button buttonUp;
+    private Button buttonIn;
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -53,8 +68,8 @@ public class ClientUI extends Application {
 
 
         //textfield username
-       TextField textUsername = new TextField();
-        grid.add(textUsername, 47, 2);
+       userText = new TextField();
+        grid.add(userText, 47, 2);
 
         //label username
         Label labelUsername = new Label();
@@ -62,8 +77,8 @@ public class ClientUI extends Application {
         grid.add(labelUsername, 47,1);
 
         //textfield password
-        TextField textPass = new TextField();
-        grid.add(textPass, 47, 4);
+        passText = new TextField();
+        grid.add(passText, 47, 4);
 
         //label password
         Label labelPass = new Label();
@@ -71,7 +86,7 @@ public class ClientUI extends Application {
         grid.add(labelPass, 47, 3);
 
         //button signup
-        Button buttonUp = new Button("Sign up");
+         buttonUp = new Button("Sign up");
         buttonUp.setOnAction(  (EventHandler) event -> {
             try {
                 // TODO: signup
@@ -82,7 +97,6 @@ public class ClientUI extends Application {
         grid.add(buttonUp, 45, 1);
 
         //button signin
-        Button buttonIn = new Button("Sign in");
         buttonIn.setOnAction(  (EventHandler) event -> {
             try {
                 // TODO: signin
@@ -164,7 +178,60 @@ public class ClientUI extends Application {
 
     public static void main(String[] args) {
         launch(args);
+       //ClientLauncher.startClient(ActiveClientEndpoint.class);
+
+    }
+//    private void IntoRandomLobby(ActionEvent event) throws InvocationTargetException {
+//
+//        int pl = 0;
+//
+//        // get the amount of players and put them in the labels
+//        playerIsConnected.setText("true");
+//        playerAmount.setText(Integer.toString(pl));
+//
+//
+//    }
+
+    //method login
+    private void LoginButtonEvent(ActionEvent event) throws InvocationTargetException {
+        String loginUserText = userText.getText();
+        String loginPassText = passText.getText();
+        System.out.println(loginUserText + " " + loginPassText);
+        RestClient client = new RestClient();
+       Player player = new Player(loginUserText, loginPassText);
+        PlayerDTO playerDTO = player.createDTO();
+
+        System.out.println(player.getUsername() + " " + player.getPassword());
+
+        if(client.loginPlayer(playerDTO)) {
+            buttonIn.setDisable(true);
+            buttonUp.setDisable(true);
+          //  buttonEnterRandom.setDisable(false);
+
+        }
+
+        else {
+            System.out.println("You are not logged in.");
+        }
+
+
+
 
     }
 
+    private void SignupButtonEvent(ActionEvent event) throws InvocationTargetException {
+        String signupUserText = userText.getText();
+        String signupPassText = passText.getText();
+       Player player = new Player(signupUserText, signupPassText);
+        PlayerDTO playerDTO = player.createDTO();
+        RestClient client  = new RestClient();
+        if(client.signupPlayer(playerDTO)) {
+            System.out.println("You are now signed up");
+        }
+
+        else  {
+            System.out.println("You are not signed up.");
+        }
+
+    }
 }

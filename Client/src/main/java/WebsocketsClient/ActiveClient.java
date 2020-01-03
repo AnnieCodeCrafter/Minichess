@@ -55,7 +55,7 @@ public class ActiveClient  implements Runnable{
 //
 //    }
 
-    public void getUser(PlayerDTO playerDTO) {
+    public void getPlayer(PlayerDTO playerDTO) {
         this.playerDTO = playerDTO;
 
         //endpoint.send(playerDTO.toString());
