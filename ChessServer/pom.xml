@@ -11,6 +11,25 @@
 
     <artifactId>ChessServer</artifactId>
 
+    <buid>
+        <plugins>
+            <plugin>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+            <version>9.4.3.v20170317</version>
+            <configuration>
+                <!-- http://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html -->
+                <scanIntervalSeconds>3</scanIntervalSeconds>
+                <!--  By Default, jetty start on port 8080
+                <httpConnector>
+                    <port>9090</port>
+                </httpConnector>
+                -->
+            </configuration>
+            </plugin>
+        </plugins>
+    </buid>
+
 
     <dependencies>
         <dependency>
@@ -51,6 +70,8 @@
 
 
         <!-- glassfish -->
+
+
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-server</artifactId>
@@ -82,6 +103,12 @@
             <artifactId>Shared</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

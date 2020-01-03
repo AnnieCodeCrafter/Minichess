@@ -77,4 +77,15 @@ public class Player {
     public PlayerDTO createDTO() {
         return new PlayerDTO(username, password, id);
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sessionID='" + sessionID + '\'' +
+                ", wins=" + wins +
+                '}';
+    }
 }
