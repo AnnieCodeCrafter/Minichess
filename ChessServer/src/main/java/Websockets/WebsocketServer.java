@@ -5,10 +5,12 @@ import Websockets.ServerStates.WebsocketsCommunicatorService;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.websocket.jsr356.server.ServerContainer;
+
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.websocket.server.ServerContainer;
 
 
 public class WebsocketServer {
@@ -34,12 +36,17 @@ public class WebsocketServer {
         webSocketContext.setContextPath("/");
         webSocketServer.setHandler(webSocketContext);
 
-        try {
+       final ServerContainer serverContainer = (ServerContainer) webSocketContext
+               .getAttribute("javax.websocket.server.ServerContainer");
+
+
+
+
+       try {
             // Initialize javax.websocket layer
-            ServerContainer wscontainer = WebSocketServerContainerInitializer.configureContext(webSocketContext);
 
             // Add WebSocket endpoint to javax.websocket layer
-            wscontainer.addEndpoint(WebsocketsCommunicatorService.class);
+            serverContainer.addEndpoint(WebsocketsCommunicatorService.class);
 
             webSocketServer.start();
             //server.dump(System.err);
@@ -49,6 +56,9 @@ public class WebsocketServer {
             t.printStackTrace(System.err);
         }
     }
+
+
+
 
 
 

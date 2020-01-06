@@ -4,6 +4,7 @@ package Websockets.ServerStates;
 import Websockets.ServerStates.Interfaces.SendMessages;
 import Websockets.ServerStates.Interfaces.ServerState;
 
+
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class WebsocketsCommunicatorService implements SendMessages {
         try {
             for (Session ses : messages.keySet())  {
                 ses.getBasicRemote().sendText(messages.get(ses));
+
                 System.out.println("onMessage: to =" + ses.getId() + " Message=" + messages.get(ses));
             }
 

@@ -1,5 +1,4 @@
 package Websockets.ServerStates.Interfaces;
-
 import javax.websocket.Session;
 import java.util.Map;
 

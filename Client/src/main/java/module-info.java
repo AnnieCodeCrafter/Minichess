@@ -6,8 +6,9 @@ module Client {
     requires httpcore;
     requires java.logging;
     requires httpclient;
-    requires Shared;
+
     requires javax.websocket.api;
+    requires Shared;
 
     exports Starts;
     exports WebsocketsClient;

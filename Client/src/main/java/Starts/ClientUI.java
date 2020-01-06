@@ -14,9 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -121,6 +123,7 @@ public class ClientUI extends Application {
         targetArea.setFill(Color.WHITE);
         root.getChildren().add(targetArea);
 
+            Image img = new Image("/img/whiteknight.png");
         // Create 10 x 10 squares for the target area
         squaresTargetArea = new Rectangle[NRSQUARESHORIZONTAL][NRSQUARESVERTICAL];
         for (int i = 0; i < NRSQUARESHORIZONTAL; i++) {
@@ -146,14 +149,10 @@ public class ClientUI extends Application {
                         rectangle.setFill(Color.BLACK);
                     }
                     else{
-                        rectangle.setFill(Color.WHITE);
+
+                        rectangle.setFill(new ImagePattern(img));
                     }
                 }
-
-
-
-
-
                 rectangle.setVisible(true);
                 final int xpos = i;
                 final int ypos = j;
@@ -169,6 +168,8 @@ public class ClientUI extends Application {
                 root.getChildren().add(rectangle);
             }
         }
+
+
 
         stage.setTitle("Minichess");
         stage.setScene(scene);
@@ -234,4 +235,21 @@ public class ClientUI extends Application {
         }
 
     }
+
+    //TODO: SET IMAGE IN SQUARE
+//    private Rectangle rectangle;
+//    Image img = new Image("/path/to/image.jpeg");
+//    rectangle.setFill(new ImagePattern(img));
+
+    //TODO: ALSO THIS MAYBE
+
+    /* Pane root = new Pane();
+    StacckPane imageContainer = new StackPane();
+    ImageView image = new ImageView(~);
+    imageContainer.getKids().addAll(newRecc(int, nt, color), img)
+    enableDragging(imageContainer);
+    root.getKids.add(imgcont);
+
+    Scene scene = new yadda yadda
+     */
 }

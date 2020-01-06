@@ -1,5 +1,6 @@
 package Websockets.ServerStates.Interfaces;
 
+
 import javax.websocket.Session;
 
 public interface ServerState {

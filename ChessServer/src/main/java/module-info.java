@@ -11,12 +11,8 @@ module ChessServer {
     requires org.eclipse.jetty.servlet;
     requires org.eclipse.jetty.websocket.javax.websocket.server;
     requires org.slf4j;
- //   requires javax.websocket.client.api;
-    requires javax.websocket.api;
 
-
-    exports Database;
-    exports REST;
+   requires javax.websocket.api;
     exports Websockets;
 
 }

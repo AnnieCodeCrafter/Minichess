@@ -1,7 +1,7 @@
 import REST.restServer;
 import Websockets.WebsocketServer;
 
-public class Shared {
+public class sharedRuns {
 
 
     public static void main(String[] args) throws Exception {
