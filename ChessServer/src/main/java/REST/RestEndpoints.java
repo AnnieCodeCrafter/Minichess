@@ -8,7 +8,6 @@ import com.google.gson.Gson;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 //import Database.PreparedStatements;

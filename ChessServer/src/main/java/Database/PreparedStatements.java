@@ -64,8 +64,8 @@ public class PreparedStatements implements IPreparedStatements {
 
             // Let's iterate through the java ResultSet
             while (rs.next()) {
-                String name = rs.getString("uname");
-                String pword = rs.getString("pword");
+                String name = rs.getString("username");
+                String pword = rs.getString("password");
                 int wins = rs.getInt("wins");
                 player = new Player(id, name, pword, wins);
             }
@@ -81,7 +81,7 @@ public class PreparedStatements implements IPreparedStatements {
     public void addPlayer(String username, String password) {
         Conn = con.getConnection();
         try {
-            String insertQueryStatement = "INSERT  INTO  player (uname, pword, wins)  VALUES  (?,?, 0)";
+            String insertQueryStatement = "INSERT  INTO  player (username, password, wins)  VALUES  (?,?, 0)";
 
             PrepareStat = Conn.prepareStatement(insertQueryStatement);
             PrepareStat.setString(1, username);

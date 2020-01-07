@@ -33,7 +33,6 @@ public class PreparedStatementsTest {
 
     @Test
     public void addPlayer() {
-        statements.addPlayer("me", "neverguess");
 
         boolean check = statements.CheckPlayer("me", "neverguess");
         Assert.assertTrue(check);

@@ -4,15 +4,15 @@ module ChessServer {
     requires javax.ws.rs.api;
     requires Shared;
 
-    requires jersey.container.servlet.core;
 
 
-    requires org.eclipse.jetty.server;
     requires org.eclipse.jetty.servlet;
     requires org.eclipse.jetty.websocket.javax.websocket.server;
     requires org.slf4j;
 
    requires javax.websocket.api;
+    requires jetty.server;
+    requires jersey.container.servlet.core;
     exports Websockets;
 
 }
