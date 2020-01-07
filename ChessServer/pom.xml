@@ -29,6 +29,25 @@
             <groupId>org.eclipse.jetty.websocket</groupId>
             <artifactId>javax-websocket-server-impl</artifactId>
             <version>9.4.15.v20190215</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>javax.websocket-api</artifactId>
+                    <groupId>javax.websocket</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.websocket</groupId>
+                    <artifactId>javax.websocket-client-api</artifactId>
+                </exclusion>
+
+                <!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+              <exclusion>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>activation</artifactId>
+
+              </exclusion>
+            </exclusions>
+
+
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
