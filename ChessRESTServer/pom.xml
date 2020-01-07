@@ -12,12 +12,7 @@
     <artifactId>ChessRESTServer</artifactId>
 
 <dependencies>
-    <dependency>
-        <groupId>org.example</groupId>
-        <artifactId>ChessServer</artifactId>
-        <version>1.0-SNAPSHOT</version>
-        <scope>compile</scope>
-    </dependency>
+
 
     <!-- REST -->
 
@@ -30,12 +25,26 @@
         <groupId>org.glassfish.jersey.containers</groupId>
         <artifactId>jersey-container-jetty-http</artifactId>
         <version>2.7</version>
+        <exclusions>
+            <exclusion>
+                <artifactId>jetty-server</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+        </exclusions>
     </dependency>
     <dependency>
         <groupId>org.glassfish.jersey.media</groupId>
         <artifactId>jersey-media-moxy</artifactId>
         <version>2.7</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlets -->
+<!--    <dependency>-->
+<!--        <groupId>org.eclipse.jetty</groupId>-->
+<!--        <artifactId>jetty-servlets</artifactId>-->
+<!--        <version>9.4.15.v20190215</version>-->
+<!--    </dependency>-->
+
 
 
     <dependency>
@@ -45,10 +54,86 @@
         <scope>compile</scope>
     </dependency>
 
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.2</version>
-        </dependency>
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.8.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-servlet</artifactId>
+        <version>10.0.0-alpha0</version>
+        <scope>compile</scope>
+
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+
+
+    <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>ChessServer</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <scope>compile</scope>
+        <exclusions>
+            <exclusion>
+                <artifactId>javax.websocket-api</artifactId>
+                <groupId>javax.websocket</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>javax.annotation-api</artifactId>
+                <groupId>javax.annotation</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jetty-http</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jetty-io</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jetty-servlet</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jetty-util</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>ChessServer</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <scope>compile</scope>
+        <exclusions>
+            <exclusion>
+                <artifactId>javax.websocket-api</artifactId>
+                <groupId>javax.websocket</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>javax.annotation-api</artifactId>
+                <groupId>javax.annotation</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jetty-http</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jetty-io</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jetty-servlet</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jetty-util</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+            </exclusion>
+
+        </exclusions>
+    </dependency>
 </dependencies>
 </project>
