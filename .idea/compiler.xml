@@ -9,6 +9,7 @@
         <module name="ChessServer" />
         <module name="ChessShared" />
         <module name="Client" />
+        <module name="ChessRESTServer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

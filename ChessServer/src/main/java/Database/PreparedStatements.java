@@ -81,14 +81,18 @@ public class PreparedStatements implements IPreparedStatements {
     public void addPlayer(String username, String password) {
         Conn = con.getConnection();
         try {
-            String insertQueryStatement = "INSERT  INTO  player (username, password, wins)  VALUES  (?,?, 0)";
 
-            PrepareStat = Conn.prepareStatement(insertQueryStatement);
-            PrepareStat.setString(1, username);
-            PrepareStat.setString(2, password);
+            if(!CheckPlayer(username, password)) {
+                String insertQueryStatement = "INSERT  INTO  player (username, password, wins)  VALUES  (?,?, 0)";
 
-            // execute insert SQL statement
-            PrepareStat.executeUpdate();
+                PrepareStat = Conn.prepareStatement(insertQueryStatement);
+                PrepareStat.setString(1, username);
+                PrepareStat.setString(2, password);
+
+                // execute insert SQL statement
+                PrepareStat.executeUpdate();
+
+            }
 
         } catch (
 

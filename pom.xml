@@ -38,6 +38,7 @@
         <module>ChessServer</module>
         <module>Client</module>
         <module>ChessShared</module>
+        <module>ChessRESTServer</module>
 
     </modules>
 

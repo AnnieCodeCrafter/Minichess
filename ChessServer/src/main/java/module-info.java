@@ -1,7 +1,7 @@
 module ChessServer {
     requires java.sql;
     requires gson;
-    requires javax.ws.rs.api;
+
     requires Shared;
 
 
@@ -11,8 +11,7 @@ module ChessServer {
     requires org.slf4j;
 
    requires javax.websocket.api;
-    requires jetty.server;
-    requires jersey.container.servlet.core;
+    requires org.eclipse.jetty.server;
     exports Websockets;
 
 }

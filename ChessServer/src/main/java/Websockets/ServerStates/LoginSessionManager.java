@@ -4,7 +4,6 @@ import Models.Player;
 
 import Websockets.ServerStates.Interfaces.SendMessages;
 import Websockets.ServerStates.Interfaces.ServerState;
-import org.eclipse.jetty.server.Authentication;
 
 
 import javax.websocket.Session;
