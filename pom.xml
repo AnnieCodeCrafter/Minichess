@@ -37,8 +37,6 @@
     <modules>
         <module>ChessServer</module>
         <module>Client</module>
-        <module>Shared</module>
-        <module>Shared</module>
         <module>ChessShared</module>
 
     </modules>
