@@ -15,6 +15,8 @@ import java.io.InputStreamReader;
 
 import org.glassfish.tyrus.server.Server;
 
+import javax.websocket.WebSocketContainer;
+
 
 public class WebsocketServer {
 
@@ -55,9 +57,10 @@ public class WebsocketServer {
 
 
     public static void startWebsocketServerTakeTwo() {
-        Server server = new Server("0.0.0.0", 8095, "/endpoint/", WebsocketsCommunicatorService.class);
+        Server server = new Server("0.0.0.0", 8095, "/", WebsocketsCommunicatorService.class);
 
         try {
+
             server.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.print("Please press a key to stop the server.");

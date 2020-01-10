@@ -12,12 +12,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
-
 public class ClientLauncher {
     private static final int PORT = 8095;
-    private static final String endpoint = "/endpoint/";
+    private static final String endpoint = "/endpoint";
     private static final String host = "ws://0.0.0.0";
 
     private static CountDownLatch latch;
@@ -42,10 +39,10 @@ public class ClientLauncher {
 
             //WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             try {
-                client.connectToServer(endpointClass, new URI(uri));
+                client.connectToServer(endpointClass, URI.create(uri));
                 latch.await();
 
-            } catch (DeploymentException | URISyntaxException | InterruptedException e) {
+            } catch (DeploymentException | InterruptedException e) {
                 Logger.getLogger(endpointClass.getName()).log(Level.SEVERE, null, e);
                 throw new RuntimeException(e);
 
@@ -53,7 +50,7 @@ public class ClientLauncher {
 
     }
 
-    public static void main(String argv[]){
+    public static void main(String[] args){
         startClientTake2(ActiveClientEndpoint.class);
     }
 

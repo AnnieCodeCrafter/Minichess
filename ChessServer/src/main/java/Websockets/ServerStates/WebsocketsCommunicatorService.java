@@ -9,12 +9,13 @@ import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @ServerEndpoint("/endpoint")
 public class WebsocketsCommunicatorService implements SendMessages {
 
     private static ServerState ServerCurrentState = null;
-
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     LoginSessionManager sessions = new LoginSessionManager(this);
 
@@ -62,8 +63,9 @@ public class WebsocketsCommunicatorService implements SendMessages {
 
     //When the connection is closed
     @OnClose
-    public void onClose(/*CloseReason reason,*/ Session session) {
+    public void onClose( Session session, CloseReason closeReason) {
         System.out.println("onClose::" +  session.getId());
+        logger.info(String.format("Session %s close because of %s", session.getId(), closeReason));
         sessions.remove(session);
 
     }
@@ -72,7 +74,10 @@ public class WebsocketsCommunicatorService implements SendMessages {
     @OnError
     public void onError(Throwable cause, Session session) {
         System.out.println("[WebSocket Session ID] : " + session.getId() + "[ERROR]: ");
+
         cause.printStackTrace(System.err);
+
+
     }
 
 }

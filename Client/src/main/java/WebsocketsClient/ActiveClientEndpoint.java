@@ -1,6 +1,5 @@
 package WebsocketsClient;
 
-
 import javax.websocket.*;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -9,7 +8,7 @@ import java.util.logging.Logger;
 @ClientEndpoint
 public class ActiveClientEndpoint {
 
-
+    private Logger logger = Logger.getLogger(this.getClass().getName());
     private Session connection;
 
     private ActiveClient myclient = new ActiveClient(this);
@@ -38,10 +37,16 @@ public class ActiveClientEndpoint {
 
     }
 
-    @OnError
-    public void processError(Throwable t) {
-        t.printStackTrace();
-    }
+//    @OnError
+//    public void processError(Throwable t) {
+//
+//        t.printStackTrace();
+//    }
 
+
+    @OnClose
+    public void onClose(Session session, CloseReason closeReason) {
+        logger.info(String.format("Session %s close because of %s", session.getId(), closeReason));
+    }
 
 }
