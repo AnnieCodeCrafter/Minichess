@@ -22,6 +22,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 
 public class ClientUI extends Application {
@@ -99,6 +100,7 @@ public class ClientUI extends Application {
         grid.add(buttonUp, 45, 1);
 
         //button signin
+        buttonIn = new Button("Sign in");
         buttonIn.setOnAction(  (EventHandler) event -> {
             try {
                 // TODO: signin
@@ -123,7 +125,7 @@ public class ClientUI extends Application {
         targetArea.setFill(Color.WHITE);
         root.getChildren().add(targetArea);
 
-            Image img = new Image("/img/whiteknight.png");
+        Image image = new Image("https://i.imgur.com/ks0NB7K.jpg");
         // Create 10 x 10 squares for the target area
         squaresTargetArea = new Rectangle[NRSQUARESHORIZONTAL][NRSQUARESVERTICAL];
         for (int i = 0; i < NRSQUARESHORIZONTAL; i++) {
@@ -150,7 +152,7 @@ public class ClientUI extends Application {
                     }
                     else{
 
-                        rectangle.setFill(new ImagePattern(img));
+                        rectangle.setFill(new ImagePattern(image));
                     }
                 }
                 rectangle.setVisible(true);

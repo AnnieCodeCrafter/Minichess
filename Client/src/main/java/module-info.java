@@ -9,6 +9,7 @@ module Client {
 
     requires javax.websocket.api;
     requires Shared;
+    requires tyrus.client;
 
     exports Starts;
     exports WebsocketsClient;
