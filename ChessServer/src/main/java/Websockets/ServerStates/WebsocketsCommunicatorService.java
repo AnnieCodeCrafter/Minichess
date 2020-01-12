@@ -71,13 +71,14 @@ public class WebsocketsCommunicatorService implements SendMessages {
     }
 
     //When an error is thrown
-    @OnError
-    public void onError(Throwable cause, Session session) {
-        System.out.println("[WebSocket Session ID] : " + session.getId() + "[ERROR]: ");
-
-        cause.printStackTrace(System.err);
-
-
-    }
+    //TODO: IS ONERROR THE PROBLEM?
+//    @OnError
+//    public void onError(Throwable cause, Session session) {
+//        System.out.println("[WebSocket Session ID] : " + session.getId() + "[ERROR]: ");
+//
+//        cause.printStackTrace(System.err);
+//
+//
+//    }
 
 }
