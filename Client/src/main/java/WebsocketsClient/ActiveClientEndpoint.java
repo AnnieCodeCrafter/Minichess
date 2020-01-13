@@ -37,11 +37,11 @@ public class ActiveClientEndpoint {
 
     }
 
-//    @OnError
-//    public void processError(Throwable t) {
-//
-//        t.printStackTrace();
-//    }
+    @OnError
+    public void processError(Throwable t) {
+
+        t.printStackTrace();
+    }
 
 
     @OnClose
