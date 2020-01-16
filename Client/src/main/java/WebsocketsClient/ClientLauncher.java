@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ClientLauncher {
-    private static final int PORT = 8095;
+    private static final int PORT = 8098;
     private static final String endpoint = "/endpoint";
     private static final String host = "ws://0.0.0.0";
 

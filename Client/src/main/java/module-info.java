@@ -11,6 +11,7 @@ module Client {
     requires Shared;
     requires tyrus.client;
     requires javax.websocket.api;
+    requires java.sql;
 
     exports Starts;
     exports WebsocketsClient;

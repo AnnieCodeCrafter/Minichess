@@ -34,7 +34,7 @@ public class MysqlCon {
 
             try {
                 // DriverManager: The basic service for managing a set of JDBC drivers.
-                Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/minichess", "root", "toor");
+                Conn = DriverManager.getConnection("jdbc:mysql://localhost:8097/minichess", "root", "Toor");
                 if (Conn != null) {
                     System.out.println("Connection successfull.");
                 } else {

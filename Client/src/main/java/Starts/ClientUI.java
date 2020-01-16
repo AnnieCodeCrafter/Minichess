@@ -10,17 +10,20 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -54,6 +57,25 @@ public class ClientUI extends Application {
     private Button buttonUp;
     private Button buttonIn;
 
+    private Button startPos;
+    private Button endPos;
+
+    private Button lobby;
+    private Button startGame;
+
+    //Image image = new Image("https://i.imgur.com/ks0NB7K.jpg");
+    Image blackBishop = new Image("https://i.imgur.com/zVHiyjX.png");
+    Image blackKing = new Image("https://i.imgur.com/IJzlvg2.png");
+    Image blackKnight = new Image("https://i.imgur.com/VaUOv5q.png");
+    Image blackRook = new Image("https://i.imgur.com/psqjBG2.png");
+    Image blackPawn = new Image("https://i.imgur.com/N7uDZwk.png");
+
+    Image whiteBishop = new Image("https://i.imgur.com/FeJTMw4.png");
+    Image whiteKing = new Image("https://i.imgur.com/JeO40ii.png");
+    Image whiteKnight = new Image("https://i.imgur.com/2wAQKgz.png");
+    Image whitePawn = new Image("https://i.imgur.com/ncbcBK8.png");
+    Image whiteRook = new Image("https://i.imgur.com/jac08oo.png");
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -63,12 +85,6 @@ public class ClientUI extends Application {
         grid.setHgap(20);
         grid.setVgap(20);
         grid.setPadding(new Insets(25, 25, 25, 25));
-
-
-        //TODO: im just puttin this here to see what happens.
-
-
-
 
         //textfield username
        userText = new TextField();
@@ -92,7 +108,7 @@ public class ClientUI extends Application {
          buttonUp = new Button("Sign up");
         buttonUp.setOnAction(  (EventHandler) event -> {
             try {
-                // TODO: signup
+                SignupButtonEvent();
             } catch (Exception e) {
                System.out.println("Register Player error: " + e.getMessage());
             }
@@ -103,7 +119,7 @@ public class ClientUI extends Application {
         buttonIn = new Button("Sign in");
         buttonIn.setOnAction(  (EventHandler) event -> {
             try {
-                // TODO: signin
+                 LoginButtonEvent();
             } catch (Exception e) {
                 System.out.println("Login Player error: " + e.getMessage());
             }
@@ -115,17 +131,58 @@ public class ClientUI extends Application {
         // Make de grid lines visible
         // grid.setGridLinesVisible(true);
 
+        startPos = new Button("Select piece.");
+        startPos.setOnAction((EventHandler) event -> {
+            try {
+                // TODO: get pos
+            } catch (Exception e) {
+                System.out.println("Login Player error: " + e.getMessage());
+            }
+        });
+        grid.add(startPos, 45, 11);
+
+        endPos = new Button("Select square to place.");
+        endPos.setOnAction((EventHandler) event -> {
+            try {
+                // TODO: get pos and place square
+            } catch (Exception e) {
+                System.out.println("Login Player error: " + e.getMessage());
+            }
+        });
+        grid.add(endPos, 45, 12);
+
         // Create the scene and add the grid pane
         Group root = new Group();
         Scene scene = new Scene(root, 1400, 750);
         root.getChildren().add(grid);
 
 
+        lobby = new Button("Enter lobby.");
+        lobby.setOnAction((EventHandler) event -> {
+            try {
+                // TODO: enter lobby
+            } catch (Exception e) {
+                System.out.println("Login Player error: " + e.getMessage());
+            }
+        });
+        grid.add(lobby, 45, 7);
+
+        startGame = new Button("Start game.");
+        lobby.setOnAction((EventHandler) event -> {
+            try {
+                // TODO: enter lobby
+            } catch (Exception e) {
+                System.out.println("Login Player error: " + e.getMessage());
+            }
+        });
+        grid.add(startGame, 45, 8);
+
+
         targetArea = new Rectangle(BORDERSIZE,3*BORDERSIZE,AREAWIDTH,AREAHEIGHT);
         targetArea.setFill(Color.WHITE);
         root.getChildren().add(targetArea);
 
-        Image image = new Image("https://i.imgur.com/ks0NB7K.jpg");
+
         // Create 10 x 10 squares for the target area
         squaresTargetArea = new Rectangle[NRSQUARESHORIZONTAL][NRSQUARESVERTICAL];
         for (int i = 0; i < NRSQUARESHORIZONTAL; i++) {
@@ -152,7 +209,7 @@ public class ClientUI extends Application {
                     }
                     else{
 
-                        rectangle.setFill(new ImagePattern(image));
+                        rectangle.setFill(Color.WHITE);
                     }
                 }
                 rectangle.setVisible(true);
@@ -162,8 +219,10 @@ public class ClientUI extends Application {
                         new EventHandler<MouseEvent>() {
                             @Override
                             public void handle(MouseEvent event) {
-//                                rectangleTargetAreaMousePressed(event,xpos,ypos);
+                                //rectangleTargetAreaMousePressed(event,xpos,ypos);
                                 //TODO: SET EVENT
+
+                                //well, none for now
                             }
                         });
                 squaresTargetArea[i][j] = rectangle;
@@ -196,7 +255,7 @@ public class ClientUI extends Application {
 //    }
 
     //method login
-    private void LoginButtonEvent(ActionEvent event) throws InvocationTargetException {
+    private void LoginButtonEvent() throws InvocationTargetException {
         String loginUserText = userText.getText();
         String loginPassText = passText.getText();
         System.out.println(loginUserText + " " + loginPassText);
@@ -222,7 +281,7 @@ public class ClientUI extends Application {
 
     }
 
-    private void SignupButtonEvent(ActionEvent event) throws InvocationTargetException {
+    private void SignupButtonEvent() throws InvocationTargetException {
         String signupUserText = userText.getText();
         String signupPassText = passText.getText();
        Player player = new Player(signupUserText, signupPassText);
@@ -233,10 +292,29 @@ public class ClientUI extends Application {
         }
 
         else  {
-            System.out.println("You are not signed up.");
+            System.out.println("You are not signed up, invalid characters or the player already exists.");
         }
 
     }
+
+    public void PlayerLogin(ActionEvent event) {
+        String signupUserText = userText.getText();
+        String signupPassText = passText.getText();
+        Player player = new Player(signupUserText, signupPassText);
+        PlayerDTO playerDTO = player.createDTO();
+        RestClient client  = new RestClient();
+        if(client.loginPlayer(playerDTO)) {
+            System.out.println("You are now logged in.");
+        }
+
+        else {
+            System.out.println("You are not logged in, invalid characters or the player doesn't exist.");
+        }
+    }
+
+
+
+
 
     //TODO: SET IMAGE IN SQUARE
 //    private Rectangle rectangle;
@@ -254,4 +332,9 @@ public class ClientUI extends Application {
 
     Scene scene = new yadda yadda
      */
+
+
+
+
+
 }
