@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 
 public class RestClient {
-    private final String url = "http://localhost:8097/authentication";
+    private final String url = "http://localhost:8098/authentication";
 
     private final Gson gson = new Gson();
 

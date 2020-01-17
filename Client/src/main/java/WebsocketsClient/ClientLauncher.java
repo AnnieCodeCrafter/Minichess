@@ -31,7 +31,7 @@ public class ClientLauncher {
 //        }
 //    }
 
-    public static void startClientTake2(Class<?> endpointClass) {
+    public static void startClientTake2() {
 
             latch = new CountDownLatch(1);
             String uri = host + ":" + PORT + endpoint;
@@ -39,11 +39,11 @@ public class ClientLauncher {
 
             //WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             try {
-                client.connectToServer(endpointClass, URI.create(uri));
+                client.connectToServer(ActiveClientEndpoint.class, URI.create(uri));
                 latch.await();
 
             } catch (DeploymentException | InterruptedException e) {
-                Logger.getLogger(endpointClass.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(ActiveClientEndpoint.class.getName()).log(Level.SEVERE, null, e);
                 throw new RuntimeException(e);
 
             }
@@ -51,7 +51,7 @@ public class ClientLauncher {
     }
 
     public static void main(String[] args){
-        startClientTake2(ActiveClientEndpoint.class);
+        startClientTake2();
     }
 
 }

@@ -131,8 +131,8 @@ public class RestEndpoints {
 
         Player player = new Player(playerRequest.getName(), playerRequest.getPlayerPass());
 
-        //TODO: FIGURE OUT WHY THIS WAS HERE
-    //    ClientLauncher.startClient(ActiveClientEndpoint.class);
+
+
 
         return Response.status(200).entity(RestResponseHelper.getSinglePlayerResponse(player)).build();
     }

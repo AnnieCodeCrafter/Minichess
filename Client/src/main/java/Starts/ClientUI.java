@@ -56,6 +56,7 @@ public class ClientUI extends Application {
 
     private Button buttonUp;
     private Button buttonIn;
+    private Button enterLobby;
 
     private Button startPos;
     private Button endPos;
@@ -126,6 +127,18 @@ public class ClientUI extends Application {
         });
 
         grid.add(buttonIn, 45, 2);
+
+        enterLobby = new Button("Enter lobby.");
+        enterLobby.setOnAction( (EventHandler) event -> {
+            try {
+                //TODO: enter lobby
+            } catch (Exception e) {
+                System.out.println("Lobby Player error: " + e.getMessage());
+            }
+        });
+        enterLobby.setDisable(true);
+        grid.add(enterLobby, 45, 5);
+
 
         // For debug purposes
         // Make de grid lines visible
@@ -269,6 +282,8 @@ public class ClientUI extends Application {
             buttonIn.setDisable(true);
             buttonUp.setDisable(true);
           //  buttonEnterRandom.setDisable(false);
+            ClientLauncher clientLauncher = new ClientLauncher();
+            ClientLauncher.startClientTake2();
 
         }
 
