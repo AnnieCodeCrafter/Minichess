@@ -72,13 +72,14 @@ public class WebsocketsCommunicatorService implements SendMessages {
 
     //When an error is thrown
     //TODO: IS ONERROR THE PROBLEM?
-//    @OnError
-//    public void onError(Throwable cause, Session session) {
-//        System.out.println("[WebSocket Session ID] : " + session.getId() + "[ERROR]: ");
-//
-//        cause.printStackTrace(System.err);
-//
-//
-//    }
+    //when I commented it out it didn't throw the error but it didn't really connect either, but i couldn't figure out what the problem was
+    @OnError
+    public void onError(Throwable cause, Session session) {
+        System.out.println("[WebSocket Session ID] : " + session.getId() + "[ERROR]: ");
+
+        cause.printStackTrace(System.err);
+
+
+    }
 
 }

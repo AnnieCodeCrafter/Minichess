@@ -19,6 +19,8 @@ public class ClientLauncher {
 
     private static CountDownLatch latch;
 
+
+    //todo: uncomment this if you wanna try it out, it should also (not) work
 //    public static void startClient(Class<?> endpointClass){
 //
 //        try {

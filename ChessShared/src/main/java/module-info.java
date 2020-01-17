@@ -3,5 +3,6 @@ module Shared {
     opens PlayerDeets;
     exports Models;
     exports RESTHelper;
+    opens  RESTHelper;
 
 }

@@ -1,6 +1,7 @@
 package Starts;
 
 import Models.Player;
+import Models.Square;
 import PlayerDeets.PlayerDTO;
 import RESTclient.RestClient;
 import WebsocketsClient.ActiveClientEndpoint;
@@ -27,6 +28,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientUI extends Application {
 
@@ -41,6 +44,7 @@ public class ClientUI extends Application {
     private final int SQUAREHEIGHT = 78; // Height of single square in pixels
 
 
+    private List<Square> squares;
     // Constants to define number of squares horizontal and vertical
     private final int NRSQUARESHORIZONTAL = 4;
     private final int NRSQUARESVERTICAL = 5;
@@ -110,7 +114,7 @@ public class ClientUI extends Application {
             try {
                 SignupButtonEvent();
             } catch (Exception e) {
-               System.out.println("Register Player error: " + e.getMessage());
+               //System.out.println("Register Player error: " + e.getMessage());
             }
         });
         grid.add(buttonUp, 45, 1);
@@ -185,6 +189,7 @@ public class ClientUI extends Application {
 
         // Create 10 x 10 squares for the target area
         squaresTargetArea = new Rectangle[NRSQUARESHORIZONTAL][NRSQUARESVERTICAL];
+      squares = new ArrayList<Square>();
         for (int i = 0; i < NRSQUARESHORIZONTAL; i++) {
             for (int j = 0; j < NRSQUARESVERTICAL; j++) {
                 double x = targetArea.getX() + i * (AREAWIDTH/NRSQUARESHORIZONTAL) + 2;
@@ -193,6 +198,8 @@ public class ClientUI extends Application {
                 rectangle.setArcWidth(5);
                 rectangle.setArcHeight(5);
                 rectangle.setStroke(Color.BLACK);
+
+                squares.add(new Square((int)x, (int)y));
 
                 if(i % 2 ==0) {
                     if(j % 2 == 0) {

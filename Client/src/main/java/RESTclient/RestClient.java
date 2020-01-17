@@ -6,8 +6,11 @@ import RESTHelper.RestResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.apache.http.HttpEntity;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -19,11 +22,14 @@ import java.util.logging.Logger;
 
 
 public class RestClient {
-    private final String url = "http://localhost:8097/authentication";
+    private final String url = "http://localhost:8098/authentication";
 
     private final Gson gson = new Gson();
 
     private final int NOTDEFINED = -1;
+
+
+
 
     public RestClient() {
 
@@ -57,6 +63,7 @@ public class RestClient {
     }
 
     public boolean signupPlayer(PlayerDTO playerRequest) {
+
         String queryGet = "/player/signup";
         RestResponse response = executeQueryPost(playerRequest, queryGet);
         PlayerDTO dtp = response.getPlayers().get(0);
