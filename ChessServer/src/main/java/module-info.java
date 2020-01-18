@@ -16,7 +16,7 @@ module ChessServer {
    requires tyrus.server;
     requires java.net.http;
     requires Java.WebSocket;
-    exports Websockets;
+   // exports Websockets;
 
 
 }
