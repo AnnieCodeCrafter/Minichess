@@ -5,19 +5,24 @@ import Websockets.ServerStates.Interfaces.SendMessages;
 import Websockets.ServerStates.Interfaces.ServerState;
 
 
-import javax.websocket.*;
-import javax.websocket.server.ServerEndpoint;
+//import javax.websocket.*;
+//import javax.websocket.server.ServerEndpoint;
+
+import org.java_websocket.WebSocket;
+import org.java_websocket.handshake.ClientHandshake;
+import org.java_websocket.server.WebSocketServer;
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Logger;
 
 @ServerEndpoint("/endpoint")
-public class WebsocketsCommunicatorService extends Endpoint implements SendMessages {
+public class WebsocketsCommunicatorService  implements SendMessages {
 
     private static ServerState ServerCurrentState = null;
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     LoginSessionManager sessions = new LoginSessionManager(this);
+
 
 
     public void sendMap(Map<Session, String> messages){
@@ -53,7 +58,9 @@ public class WebsocketsCommunicatorService extends Endpoint implements SendMessa
 //
 //    }
 
-    @Override
+
+
+    @OnOpen
     public void onOpen(Session session, EndpointConfig endpointConfig) {
         System.out.println("onOpen::" + session.getId());
         if (ServerCurrentState == null){

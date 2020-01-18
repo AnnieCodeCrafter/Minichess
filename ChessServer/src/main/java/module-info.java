@@ -14,6 +14,8 @@ module ChessServer {
    requires org.eclipse.jetty.server;
     requires javax.servlet.api;
    requires tyrus.server;
+    requires java.net.http;
+    requires Java.WebSocket;
     exports Websockets;
 
 
