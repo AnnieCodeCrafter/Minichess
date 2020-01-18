@@ -39,11 +39,19 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlets -->
-<!--    <dependency>-->
-<!--        <groupId>org.eclipse.jetty</groupId>-->
-<!--        <artifactId>jetty-servlets</artifactId>-->
-<!--        <version>9.4.15.v20190215</version>-->
-<!--    </dependency>-->
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-servlets</artifactId>
+        <version>9.4.25.v20191220</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-client -->
+    <dependency>
+        <groupId>org.eclipse.jetty.websocket</groupId>
+        <artifactId>websocket-client</artifactId>
+        <version>9.4.25.v20191220</version>
+    </dependency>
+
 
 
 
