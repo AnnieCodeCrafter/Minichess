@@ -29,7 +29,7 @@ public class GreetingClient {
 
     public static void main(String [] args) {
         String serverName = "localhost";
-        int port = 8080;//Integer.parseInt(args[1]);
+        int port = 8098;//Integer.parseInt(args[1]);
         GreetingClient gs = new GreetingClient(serverName, port);
     }
 }

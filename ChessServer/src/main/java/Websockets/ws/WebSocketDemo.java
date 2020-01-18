@@ -14,8 +14,10 @@ public class WebSocketDemo {
         CompletableFuture<WebSocket> server_cf = HttpClient.
                 newHttpClient().
                 newWebSocketBuilder().
-                buildAsync(URI.create("ws://localhost:4567/echo"),
+                buildAsync(URI.create("ws://localhost:8098/echo"),
                         new WebSocketClient());
+
+
         WebSocket server = server_cf.join();
 
         server.sendPing(ByteBuffer.wrap("Ping:Server --> Client".getBytes(Charset.forName("UTF-16"))));

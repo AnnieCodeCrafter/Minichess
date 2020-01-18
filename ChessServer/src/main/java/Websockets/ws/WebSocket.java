@@ -19,7 +19,7 @@ public class WebSocket {
     }
 
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
-        ServerSocket server = new ServerSocket(8080);
+        ServerSocket server = new ServerSocket(8098);
         try {
             System.out.println("Server has started on 127.0.0.1:8080.\r\nWaiting for a connection...");
             Socket client = server.accept();

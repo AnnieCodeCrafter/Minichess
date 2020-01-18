@@ -15,7 +15,7 @@ public class GreetingServer extends Thread {
 
     public GreetingServer(int port) throws IOException {
         serverSocket = new ServerSocket(port);
-        serverSocket.setSoTimeout(100000);
+        //serverSocket.setSoTimeout(100000);
     }
 
     public void run() {
@@ -45,7 +45,7 @@ public class GreetingServer extends Thread {
     }
 
     public static void main(String [] args) {
-        int port = 8080;// Integer.parseInt(args[0]);
+        int port = 8098;// Integer.parseInt(args[0]);
         try {
             Thread t = new GreetingServer(port);
             t.start();

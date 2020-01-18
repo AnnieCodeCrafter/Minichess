@@ -33,7 +33,7 @@ public class WebSocketExample {
         HttpClient httpClient = HttpClient.newBuilder().executor(executor).build();
         Builder webSocketBuilder = httpClient.newWebSocketBuilder();
         //WebSocket webSocket = webSocketBuilder.buildAsync(URI.create("wss://echo.websocket.org"), new WebSocketListener()).join();
-        WebSocket webSocket = webSocketBuilder.buildAsync(URI.create("ws://localhost:8080"), new WebSocketListener()).join();
+        WebSocket webSocket = webSocketBuilder.buildAsync(URI.create("ws://localhost:8098"), new WebSocketListener()).join();
         logger.info("WebSocket created");
 
         webSocket.sendText("hello from client", true);

@@ -15,6 +15,6 @@ public class WebSocketsLittleClient {
 
     public static void main(String[] args) throws Exception {
 
-        var exampleSocket = new WebSocket("wss:127.0.0.1:8080", "protocolOne");
+        var exampleSocket = new WebSocket("wss:127.0.0.1:8098", "protocolOne");
     }
 }
