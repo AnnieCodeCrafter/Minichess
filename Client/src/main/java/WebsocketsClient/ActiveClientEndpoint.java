@@ -28,6 +28,7 @@ public class ActiveClientEndpoint {
     public void onOpen(Session session) {
         connection = session;
         System.out.println("Connected to endpoint: " + session.getBasicRemote());
+        System.out.println("Yes it did connect");
     }
 
     @OnMessage

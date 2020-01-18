@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 @ServerEndpoint("/endpoint")
-public class WebsocketsCommunicatorService implements SendMessages {
+public class WebsocketsCommunicatorService extends Endpoint implements SendMessages {
 
     private static ServerState ServerCurrentState = null;
     private Logger logger = Logger.getLogger(this.getClass().getName());
@@ -42,15 +42,25 @@ public class WebsocketsCommunicatorService implements SendMessages {
 
 
     //When it connects
-    @OnOpen
-    public void onConnect(Session session) {
+
+//    public void onConnect(Session session) {
+//        System.out.println("onOpen::" + session.getId());
+//        if (ServerCurrentState == null){
+//            ServerCurrentState = new LoginSessionManager(this);
+//        }
+//        System.out.println("ping onConnect server");
+//        ServerCurrentState.add(session);
+//
+//    }
+
+    @Override
+    public void onOpen(Session session, EndpointConfig endpointConfig) {
         System.out.println("onOpen::" + session.getId());
         if (ServerCurrentState == null){
             ServerCurrentState = new LoginSessionManager(this);
         }
         System.out.println("ping onConnect server");
         ServerCurrentState.add(session);
-
     }
 
     //When a message is received
@@ -60,6 +70,8 @@ public class WebsocketsCommunicatorService implements SendMessages {
         sessions.SessionMapper(message, session);
 
     }
+
+
 
     //When the connection is closed
     @OnClose
@@ -71,14 +83,14 @@ public class WebsocketsCommunicatorService implements SendMessages {
     }
 
     //When an error is thrown
-    //TODO: IS ONERROR THE PROBLEM?
-//    @OnError
-//    public void onError(Throwable cause, Session session) {
+   // TODO: IS ONERROR THE PROBLEM?
+    @OnError
+    public void onError(Throwable cause, Session session) {
 //        System.out.println("[WebSocket Session ID] : " + session.getId() + "[ERROR]: ");
-//
-//        cause.printStackTrace(System.err);
-//
-//
-//    }
+
+        cause.printStackTrace(System.err);
+
+
+    }
 
 }
